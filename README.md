@@ -43,12 +43,13 @@ document, which is the honest grain size for a plan. See [docs/rfc-map.md](docs/
 | Document | Status | Published | What it gives this project |
 |---|---|---|---|
 | RFC 2622 | Proposed Standard | 1999-06 | RPSL: object definitions, the set expression grammar and the delete syntax |
-| RFC 4012 | Proposed Standard | 2005-02 | digest objects for secure route origin registration |
+| RFC 4012 | Proposed Standard | 2005-03 | RPSLng: routing policy for the IPv6 and multicast address families |
+| RFC 7909 | Proposed Standard | 2016-06 | RPKI signatures on RPSL objects, updating RFC 2622 and RFC 4012 |
 | IRRd database query interface | operational practice | - | whois style queries, the newer HTTP and REST interfaces, and per database syntax quirks |
 
 ### Errata watch
 
-- RFC 2622 carries 3 verified errata and is updated by RFC 4012 and RFC 7909; RFC 7909 adds the as-set import semantics that most parsers get wrong. Verify both before M2.
+- RFC 2622 carries 3 verified errata and is updated by RFC 4012 and RFC 7909; RFC 4012 adds the IPv6 and multicast policy extensions and RFC 7909 adds a signature attribute validated against the RPKI (rfclib, 2026-11-07). Verify both before M2.
 - The four large IRRs differ in practice on comments, mangling and mirroring latency. Treat divergence as data and record which database answered.
 
 ## Module layout
@@ -57,7 +58,7 @@ document, which is the honest grain size for a plan. See [docs/rfc-map.md](docs/
 |---|---|
 | `objects` | RPSL object classes, attributes and the reserved word set (RFC 2622) |
 | `parser` | lenient line parsing that preserves source and comments (RFC 2622) |
-| `sets` | route set and as set expansion with cycles and imports (RFC 2622, RFC 7909) |
+| `sets` | route set and as set expansion with cycles and imports (RFC 2622) |
 | `client` | whois and HTTP queries with timeouts and per source budgets |
 | `resolve` | origin resolution for a prefix with ambiguity preserved |
 | `compare` | IRR against RPKI and against observed routing |
@@ -67,13 +68,14 @@ document, which is the honest grain size for a plan. See [docs/rfc-map.md](docs/
 
 - generating router configuration from RPSL
 - being an IRR server or handling maintainer authentication and object updates
-- validating route authorisation policy, which is rpkit and pkix
+- validating route authorisation policy, which is rpkit
 
 
 ## Install
 
 ```bash
-git clone https://github.com/b1tninja/rpslkit.cd rpslkit
+git clone https://github.com/b1tninja/rpslkit.git
+cd rpslkit
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\\Scripts\\Activate.ps1
 pip install -e ".[dev]"

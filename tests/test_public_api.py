@@ -17,7 +17,7 @@ import rpslkit as package
 SURFACE = [
     ("parser", "parse", "RFC 2622"),
     ("objects", "matches_prefix", "RFC 2622"),
-    ("sets", "expand", "RFC 7909"),
+    ("sets", "expand", "RFC 2622 section 5"),
     ("client", "query", "design"),
     ("resolve", "origins", "RFC 2622"),
     ("compare", "conflicts", "design"),
@@ -38,7 +38,10 @@ def test_surface_is_documented(module_name, fn, cite):
     module = importlib.import_module(package.__name__ + "." + module_name)
     target = getattr(module, fn)
     assert target.__doc__, fn + " needs a docstring"
-    assert cite in target.__doc__, fn + " must cite the document that defines it"
+    # Docstrings are wrapped, so a long citation can span a line break; compare words, not layout.
+    assert " ".join(cite.split()) in " ".join(target.__doc__.split()), (
+        fn + " must cite the document that defines it"
+    )
 
 
 @pytest.mark.parametrize(("module_name", "fn", "cite"), SURFACE)

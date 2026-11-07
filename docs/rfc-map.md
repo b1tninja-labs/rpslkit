@@ -3,7 +3,8 @@
 | Document | Status | Published | Verified against the publisher record on |
 |---|---|---|---|
 | RFC 2622 | Proposed Standard | 1999-06 | 2026-11-05 |
-| RFC 4012 | Proposed Standard | 2005-02 | 2026-11-05 |
+| RFC 4012 | Proposed Standard | 2005-03 | 2026-11-05 |
+| RFC 7909 | Proposed Standard | 2016-06 | 2026-11-05 |
 | IRRd database query interface | operational practice | - | 2026-11-05 |
 
 Citation rules, in the order they most often get broken:

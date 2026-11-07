@@ -47,7 +47,8 @@ with their line ranges.
 ## Section refs for this project
 
 - RFC 2622 (Proposed Standard, 1999-06)
-- RFC 4012 (Proposed Standard, 2005-02)
+- RFC 4012 (Proposed Standard, 2005-03)
+- RFC 7909 (Proposed Standard, 2016-06)
 - IRRd database query interface (operational practice, -)
 
 ## Traps that have already bitten this portfolio
