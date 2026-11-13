@@ -5,9 +5,10 @@
      the badges stay commented out until the tag exists.
 -->
 
-**Pre-alpha shell.** The package surface, the obligation matrix and the CI gates exist.
-No protocol behaviour is implemented: every public function raises `NotImplementedError`,
-and the test suite records that rather than hiding it. Read
+**Pre-alpha.** The RPSL object parser (`parser.parse`, `parser.parse_lenient`) and the
+address-prefix-range operators (`ranges`) work and are tested against RFC 2622 section 2.
+Everything else, set expansion, origin resolution, the clients and the comparison, is still a
+stub that raises `NotImplementedError`, and the test suite records that rather than hiding it. Read
 [ROADMAP.md](ROADMAP.md) before depending on any of it.
 
 rpslkit -- RPSL parsing and IRR queries without a decade old dependency
@@ -58,11 +59,18 @@ document, which is the honest grain size for a plan. See [docs/rfc-map.md](docs/
 |---|---|
 | `objects` | RPSL object classes, attributes and the reserved word set (RFC 2622) |
 | `parser` | lenient line parsing that preserves source and comments (RFC 2622) |
+| `ranges` | address prefix ranges and the range operators (RFC 2622 section 2, RFC 4012 section 2.4) |
 | `sets` | route set and as set expansion with cycles and imports (RFC 2622) |
 | `client` | whois and HTTP queries with timeouts and per source budgets |
 | `resolve` | origin resolution for a prefix with ambiguity preserved |
 | `compare` | IRR against RPKI and against observed routing |
 | `sources` | registry of IRR databases, endpoints and quirks |
+
+## Dependencies
+
+The standard library only. If a primitive from the `cryptography` package is ever needed (for
+example to validate RFC 7909 signatures) it may be used for cryptography and nothing else;
+parsing, ASN.1 and CMS handling are written here or taken from the sibling `asn1core` project.
 
 ## What it does not do
 

@@ -61,6 +61,19 @@ rather than merely incomplete.
    An agent that "helpfully" implements a non-goal has expanded the API surface that
    has to be supported forever.
 
+## Dependencies
+
+Standard library only. The `cryptography` package may be added for cryptographic primitives (RSA,
+AES, signatures); everything else, including ASN.1, certificate and CMS parsing, is written here or
+taken from `asn1core` by sibling path. Do not add `asn1crypto`, `pyasn1` or similar.
+
+## Parser policy
+
+`parser.parse` is strict and `parse_lenient` reports. `RpslObject.raw` is a slice of the input and is
+never rebuilt from parsed fields. `ranges` never enumerates addresses. The policy calls the RFC does
+not make (whitespace-only line, non-ASCII, empty ranges, IPv6 maximum) are listed in ROADMAP.md
+section 5.
+
 ## Read before implementing
 
 - RFC 2622 carries 3 verified errata and is updated by RFC 4012 and RFC 7909; RFC 4012 adds the IPv6 and multicast policy extensions and RFC 7909 adds a signature attribute validated against the RPKI (rfclib, 2026-11-07). Verify both before M2.

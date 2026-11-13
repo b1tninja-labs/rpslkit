@@ -16,6 +16,8 @@ import rpslkit as package
 
 SURFACE = [
     ("parser", "parse", "RFC 2622"),
+    ("parser", "parse_lenient", "RFC 2622"),
+    ("ranges", "apply_operator", "RFC 2622 section 2"),
     ("objects", "matches_prefix", "RFC 2622"),
     ("sets", "expand", "RFC 2622 section 5"),
     ("client", "query", "design"),

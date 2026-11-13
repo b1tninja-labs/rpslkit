@@ -6,7 +6,7 @@ irrtree, last shipped 1.4.0 on 2021-06-24.
 
 from __future__ import annotations
 
-from . import apps, cli, client, compare, objects, parser, resolve, sets, sources
+from . import apps, cli, client, compare, objects, parser, ranges, resolve, sets, sources
 from .client import query
 from .compare import conflicts
 from .objects import matches_prefix
@@ -30,6 +30,7 @@ __all__ = [
     "parse",
     "parser",
     "query",
+    "ranges",
     "resolve",
     "sets",
     "sources",
